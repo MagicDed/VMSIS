@@ -3,9 +3,9 @@
 int main()
 {
      int m[10];
-     int b = 0;                                                 //переменная для большего произведения
+     int b = 0;                                                //переменная для большего произведения
      int slot = 0;                                             //переменная для его позиции
-    for (int i = 0; i < 10; i++)                                //цикл для ввода чисел в массив
+    for (int i = 0; i < 10; i++)                               //цикл для ввода чисел в массив
     {
         printf("Write a number: ");                                  //пишешь число
         scanf_s("%d", &m[i]);                                        //присваиваешь число к массиву
@@ -23,7 +23,7 @@ int main()
     {
         printf("%d ", m[i]);                                         //вывод массива
     }
-    printf("\n Biggest product of a number: %d", b);            //вывод большего числа, которое b
+    printf("\n Biggest product of a number: %d", b);           //вывод большего числа, которое b
     printf("\n Slot: %d", slot);                               //вывод его позиции, которое slot
     return 0;
 }
