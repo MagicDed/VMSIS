@@ -6,10 +6,10 @@ int main();
     int num;
     int n;
     int sum;
-    for (int i = 0; i < 10; i++)       //цикл для ввода цифр в первый массив
+    for (int i = 0; i < 10; i++)       
 	{
-		printf("Write a number: ");    //ввод числа
-		scanf_s("%d", &m[i]);         //ввод цифр в массив
+		printf("Write a number: ");    
+		scanf_s("%d", &m[i]);         
 	}
     for (int i = 0; i < 10; i++)
     {
@@ -20,10 +20,9 @@ int main();
         }
     }
 
-    	for (int i = 0; i < 10; i++)       //цикл для вывода
+    	for (int i = 0; i < 10; i++)       
 	{
-		printf("%d ", m[i]);           //вывод второго массива
+		printf("%d ", m[i]);           
 	}
-    sum = n * num;
     printf("Mult %d\n", sum);
 }
