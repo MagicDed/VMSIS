@@ -1,3 +1,5 @@
+// Тест сортировки пузырьком
+
 #include <stdio.h>
 #define N 5
 
