@@ -1,10 +1,10 @@
 #include <stdio.h>
-#define N 5                                         // Размер матрицы N на N(Матрица 5 на 5)
+#define N 4                                         // Размер матрицы N на N(Матрица 5 на 5)
 
 int main()
 {
     int mm[N] [N];                                  // Размер матрицы N на N
-    int t, max;                                          // Для временной переменной(свап) 
+    int t, max, line, num;                                          // Для временной переменной(свап) 
     for(int i = 0; i < N; i++)                          // Весь цикл чтобы вписать цифры в матрицу (Цикл, чтобы вписать N чисел в линию)
     {
         for(int j = 0; j < N; j++)                          // Цикл для ввода цифр в N линий
@@ -28,6 +28,8 @@ int main()
         if(max < mm[i][j])
         {
             max = mm[i][j];
+            line = i + 1;
+            num = j + 1;
         }
     }
     for(int i = 1; i < N; i++)
@@ -37,9 +39,12 @@ int main()
             if(max < mm[i][j])
             {
                 max = mm[i][j];
+                line = i + 1;
+                num = j + 1;
             }
         }
     }
-    printf("Max: %d", max);
+    printf("Max: %d\n", max);
+    printf("Line: %d\nNumber: %d", line, num);
     return 0;
 }
