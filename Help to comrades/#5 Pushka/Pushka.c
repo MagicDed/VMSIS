@@ -22,14 +22,16 @@ int main()
         printf("\n");                                       // Для перехода на новую строчку
     }
     max = mm[0][0];
-    for(int i = 0; i < N; i++)
+    for(int i = N - 1; i == 0; i--)
     {
-        int j = i;
-        if(max < mm[i][j])
+        for(int j = N - 1; j == 0; j--)
         {
-            max = mm[i][j];
-            line = i + 1;
-            num = j + 1;
+            if(max < mm[i][j])
+            {
+                max = mm[i][j];
+                line = i + 1;
+                num = j + 1;
+            }
         }
     }
     for(int i = 1; i < N; i++)
