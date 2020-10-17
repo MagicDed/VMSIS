@@ -1,66 +1,66 @@
+// В матрице найти найти минимальное число на четном месте
+
 #include <stdio.h>
 #include <stdlib.h>
-// #include <iostream>
+// #include <iostream>                  // Для VS
 
 int main()
 {
-    int x, row, col;
-    int min = 0;
-    int co1, co2;
-    int **mas;
+    int x, row, col;                                            //
+    int min = 0;                                                //
+    int co1, co2;                                               //
+    int **mas;                                                  //
     do
     {
-        // system("CLS");
+        // system("CLS");                                                       // Для VS
         printf("How many lines? ");
         scanf_s("%d", &row);
         printf("how many numbers in the line? ");
         scanf_s("%d", &col);
-        mas = (int**)malloc(row * sizeof(int*));
-        for(int i = 0; i < row; i++)
+        mas = (int**)malloc(row * sizeof(int*));                                // Выделение памяти под строчки
+        for(int i = 0; i < row; i++)                                            // Цикл для выделения памяти под столбцы
         {
-            mas[i] = (int*)malloc(col * sizeof(int));
+            mas[i] = (int*)malloc(col * sizeof(int));                               // Выделение памяти под столбцы
         }
-        for(int i = 0; i < row; i++)
+        for(int i = 0; i < row; i++)                                            // Цикл для ввода цифр в матрицу
         {
             for(int j = 0; j < col; j++)
             {
-                printf("Write a number: ");
-                scanf_s("%d", &mas[i][j]);
+                printf("Write a number: ");                                         // Вывод надписи(введите число)
+                scanf_s("%d", &mas[i][j]);                                          // Присваивание числа к матрице
             }
         }
-        for(int i = 0; i < row; i++)
+        for(int i = 0; i < row; i++)                                            // Цикл для вывода матрицы
         {
             for(int j = 0; j < col; j++)
             {
-                printf("%d\t", mas[i][j]);
+                printf("%d\t", mas[i][j]);                                              // Выводит матрицу 
             }
             printf("\n");
         }
-        for(int i = 0; i < row; i++)
+        for(int i = 0; i < row; i++)                                            // Цикл находит максимальное на четном месте
         {
-            for(int j = 1; j < col; j++)
+            for(int j = 1; j < col; j = j + 2)
             {
-                if(min < mas[i][j])
+                if(min < mas[i][j])                                                     // Если число больше мин то
                 {
-                    min = mas[i][j];
+                    min = mas[i][j];                                                        // Оно новое мин
                 }
-                j = j + 1;
             }
         }
-        for(int i = 0; i < row; i++)
+        for(int i = 0; i < row; i++)                                            // Цикл находит минимальное число на четном месте
         {
-            for(int j = 1; j < col; j++)
+            for(int j = 1; j < col; j = j + 2)
             {
-                if(mas[i][j] < min && mas[i][j] >= 0)
+                if(mas[i][j] < min && mas[i][j] >= 0)                                   // Если число меньше минимального и больше нуля то
                 {
-                    min = mas[i][j];
+                    min = mas[i][j];                                                        // Это число новое мин
                 }
-                j = j + 1;
             }
         }
         printf("Min: %d\n", min);
-        printf("Do you want to repeat the program?\n1. Yes\n2. No\nAnswer: ");
-        scanf_s("%d", &x);
-    } while (x == 1);
+        printf("Do you want to repeat the program?\n1. Yes\n2. No\nAnswer: ");  // Повтор цикла
+        scanf_s("%d", &x);                                                      // Присваивание числа
+    } while (x == 1);                                                       // Если один то повтор проги
     return 0;
 }
