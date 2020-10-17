@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-// #include <iostream>
+// #include <iostream>                  // Для VS
 
 int main()
 {
@@ -13,8 +13,8 @@ int main()
     int **mas;
     do
     {
-        // system("CLS");
-        printf("How many lines? ");
+        // system("CLS");                                           // Для VS
+        printf("How many lines? ");                                             
         scanf_s("%d", &row);
         printf("how many numbers in the line? ");
         scanf_s("%d", &col);

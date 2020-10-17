@@ -6,10 +6,10 @@
 
 int main()
 {
-    int x, row, col;                                            //
-    int min = 0;                                                //
-    int co1, co2;                                               //
-    int **mas;                                                  //
+    int x, row, col;                                            // Для повторения проги(x) Колво линий(row) Колво столбцов(col)
+    int min = 0;                                                // Минимальное
+    int co1, co2;                                               // Координаты
+    int **mas;                                                  // Указатель на матрицу
     do
     {
         // system("CLS");                                                       // Для VS
