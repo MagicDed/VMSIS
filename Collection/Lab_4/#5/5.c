@@ -38,7 +38,32 @@ int main()
             printf("\n");
         }
         printf("\n");                                               // Отступ между выведиными матрицами
-
+        for(int j = 0; j < col; j++)
+        {
+            for(int k = 0; k < row; k++)
+            {
+                for(int i = 1 + k; i < row; i++)
+                {
+                    if(mas[k][j] > 0)
+                    {
+                        do
+                        {
+                            k = k + 1;
+                            i = i + 1;
+                        } while(mas[k][j] > 0 && i < row);                        
+                    }
+                    if(mas[k][j] < 0)
+                    {
+                        if(mas[k][j] > mas[i][j])
+                        {
+                            t = mas[k][j];
+                            mas[k][j] = mas[i][j];
+                            mas[i][j] = t;
+                        }
+                    }
+                }
+            }
+        }
         for (int i = 0; i < row; i++)                               // Вывод матрицы
         {
             for(int j = 0; j < col; j++)
