@@ -14,76 +14,76 @@ int main()
     do
     {
         // system("CLS");                                           // Для VS
-        printf("How many lines? ");                                             
-        scanf_s("%d", &row);
-        printf("how many numbers in the line? ");
-        scanf_s("%d", &col);
-        mas = (int**)malloc(row * sizeof(int*));
-        for(int i = 0; i < row; i++)
+        printf("How many lines? ");                                             // Вывод текста (сколько строк)
+        scanf_s("%d", &row);                                                    // Присваивание числа
+        printf("how many numbers in the line? ");                               // Вывод текста (сколько столбцов)
+        scanf_s("%d", &col);                                                    // Присваивание числа
+        mas = (int**)malloc(row * sizeof(int*));                                // Выделение памяти под строчки
+        for(int i = 0; i < row; i++)                                            // Цикл для выделения памяти под столбцы
         {
-            mas[i] = (int*)malloc(col * sizeof(int));
+            mas[i] = (int*)malloc(col * sizeof(int));                               // Выделение памяти под столбцы
         }
-        for(int i = 0; i < row; i++)
+        for(int i = 0; i < row; i++)                                            // Цикл для ввода цифр в матрицу
         {
             for(int j = 0; j < col; j++)
             {
-                printf("Write a number: ");
-                scanf_s("%d", &mas[i][j]);
+                printf("Write a number: ");                                             // Вывод надписи(введите число)
+                scanf_s("%d", &mas[i][j]);                                              // Присваивание числа к матрице
             }
         }
-        for(int i = 0; i < row; i++)
+        for(int i = 0; i < row; i++)                                            // Цикл вывода массива
         {
             for(int j = 0; j < col; j++)
             {
-                printf("%d\t", mas[i][j]);
+                printf("%d\t", mas[i][j]);                                              // Выводит массив
             }
-            printf("\n");
+            printf("\n");                                                           // Переход на новую линию
         }
         printf("\n");
-        for(int i = 0; i < row; i++)
+        for(int i = 0; i < row; i++)                                            // Цикл нахождения минмакс и минмакс
         {
             for(int j = 0; j < col; j++)
             {
-                if(mas[i][j] < minmax)
+                if(mas[i][j] < minmax)                                                  // Ищем самое минимальное
                 {
-                    minmax = mas[i][j];
+                    minmax = mas[i][j];                                                     // Если меньше то оно новое минимальное
                 }
-                if(mas[i][j] > maxmin)
+                if(mas[i][j] > maxmin)                                                  // Ищем самое максимальное
                 {
-                    maxmin = mas[i][j];
+                    maxmin = mas[i][j];                                                     // Если меньше то оно новое максимальное
                 }
             }
         }
-        for(int i = 0; i < row; i++)
+        for(int i = 0; i < row; i++)                                            // Цикл нахождения минмакс и минмакс 
         {
             for(int j = 0; j < col; j++)
             {
-                if(mas[i][j] < 0 && mas[i][j] > minmax)
+                if(mas[i][j] < 0 && mas[i][j] > minmax)                                 // Если число меньше минмакс и меньше нуля
                 {
-                    co1 = i;
-                    co2 = j;
+                    co1 = i;                                                                // Запоминаем ее координаты
+                    co2 = j;                                                                // Запоминаем ее координаты
                 }
-                if(mas[i][j] >= 0 && mas[i][j] < maxmin)
+                if(mas[i][j] >= 0 && mas[i][j] < maxmin)                                // Если число меньше максмин и меньше нуля
                 {
-                    co3 = i;
-                    co4 = j;
+                    co3 = i;                                                                // Запоминаем ее координаты
+                    co4 = j;                                                                // Запоминаем ее координаты
                 }
             }
         }
-        t = mas[co1][co2];
-        mas[co1][co2] = mas[co3][co4];
-        mas[co3][co4] = t;
-        for(int i = 0; i < row; i++)
+        t = mas[co1][co2];                                                      // Минмакс запоминается
+        mas[co1][co2] = mas[co3][co4];                                          // Вместо него пишем максмин
+        mas[co3][co4] = t;                                                      // Вставляем минмакс вместо максмин
+        for(int i = 0; i < row; i++)                                            // Цикл для вывода матрицы
         {
             for(int j = 0; j < col; j++)
             {
-                printf("%d\t", mas[i][j]);
+                printf("%d\t", mas[i][j]);                                              // Вывод матрицы
             }
             printf("\n");
         }
-        printf("Maxmin: %d\nMinmax: %d\n", mas[co3][co4], mas[co1][co2]);
-        printf("Do you want to repeat the program?\n1. Yes\n2. No\nAnswer: ");
-        scanf_s("%d", &x);
-    } while (x == 1);
+        printf("Maxmin: %d\nMinmax: %d\n", mas[co3][co4], mas[co1][co2]);           // Вывод минмакс и максмин 
+        printf("Do you want to repeat the program?\n1. Yes\n2. No\nAnswer: ");      // Вывод повтора программы да/нет
+        scanf_s("%d", &x);                                                          // Если 1
+    } while (x == 1);                                                           // То повторяем
     return 0;
 }
