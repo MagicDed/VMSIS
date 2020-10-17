@@ -4,7 +4,7 @@
 
 int main()
 {
-    int x, N, max;
+    int x, N, max, j;
     int co1, co2;
     int **mas;
     do
@@ -56,7 +56,10 @@ int main()
                     printf("%d\t", mas[i][j]);
                 }
             }
-            printf("\n");
+            if(!(co1 == i || co2 == j))
+            {
+                printf("\n");
+            }
         }
         printf("Max: %d\n", max);
         printf("Do you want to repeat the program?\n1. Yes\n2. No\nAnswer: ");
