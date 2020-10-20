@@ -4,7 +4,7 @@
 
 int main()
 {
-    int x, N, max;
+    int x, t, N, max;
     int **mas;
     do
     {
@@ -41,19 +41,19 @@ int main()
                 if(mas[i][j] > max)
                 {
                     max = mas[i][j];
-                    for(int k = 0; k < N; k++)
-                    {
-                        if(max < mas[k][j] && (!i == k))
-                        {
-                            dot = max;
-                        }
-                        if(max > mas[k][j] && (!i == k))
-                        {
-                            break;
-                        }
-                        
-                    }
+                    t = j;
                 }
+            }
+            for(int k = 0; k < N; k++)
+            {
+                if(max < mas[k][t] && (!i == k))
+                {
+                    dot = max;
+                }
+                if(max > mas[k][t] && (!i == k))
+                {
+                    break;
+                } 
             }
         }
         printf("Sedlovaya dot: %d\n", dot);
