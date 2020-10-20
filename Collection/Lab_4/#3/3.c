@@ -4,12 +4,12 @@
 
 int main()
 {
-    int x, N;
-    int co1, co2;
+    int x, N, max;
     int **mas;
     do
     {
         // system("CLS");
+        int dot = 0;
         printf("What's the size of the matrix cube? ");
         scanf_s("%d", &N);
         mas = (int**)malloc(N * sizeof(int*));
@@ -33,7 +33,30 @@ int main()
             }
             printf("\n");
         }
-        
+        for(int i = 0; i < N; i++)
+        {
+            max = mas[i][0];
+            for(int j = 0; j < N; j++)
+            {
+                if(mas[i][j] > max)
+                {
+                    max = mas[i][j];
+                    for(int k = 0; k < N; k++)
+                    {
+                        if(max < mas[k][j] && (!i == k))
+                        {
+                            dot = max;
+                        }
+                        if(max > mas[k][j] && (!i == k))
+                        {
+                            break;
+                        }
+                        
+                    }
+                }
+            }
+        }
+        printf("Sedlovaya dot: %d\n", dot);
         printf("Do you want to repeat the program?\n1. Yes\n2. No\nAnswer: ");
         scanf_s("%d", &x);
     } while (x == 1);
