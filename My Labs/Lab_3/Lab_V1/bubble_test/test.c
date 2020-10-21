@@ -15,15 +15,15 @@ int main()
     {
         printf("%d ", mm[i]);
     }
-    for(int i = 0; i < N - 1; i++)
+    for(int i = 0; i < N; i++)
     {
-        for(int j = 0 ; j < N - i - 1 ; j++)
+        for(int j = 1 + i; j < N; j++)
         {
-            if(mm[j] > mm[j+1]) 
+            if(mm[i] > mm[j]) 
             {
-                t = mm[j];               
-                mm[j] = mm[j + 1];
-                mm[j + 1] = t; 
+                t = mm[i];
+                mm[i] = mm[j];
+                mm[j] = t;
             }
         }  
     }
