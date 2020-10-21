@@ -40,7 +40,7 @@ int main()
         }
         for(int i = 0; i < row; i++)                                            // Цикл находит максимальное на четном месте
         {
-            for(int j = 1; j < col; j = j + 2)
+            for(int j = 1; j < col; j += 2)
             {
                 if(min < mas[i][j])                                                     // Если число больше мин то
                 {
