@@ -7,7 +7,7 @@
 int main()
 {
     int x, t, N, max;                   // Повтор программы(x) Временная(t) Размер матрицы(N) Макс число(max) 
-    int dot = 0;                        // Седловая точка
+    int dot;                            // Седловая точка
     int **mas;                          // Указатель на матрицу
     do
     {
@@ -58,7 +58,14 @@ int main()
                 } 
             }
         }
-        printf("Sedlovaya dot: %d\n", dot);                                         // Вывод максимального числа
+        if(!dot)                                                                    // Если точки нет
+        {
+            printf("There is no sedlovaya dot\n");                                        // Значит нету
+        }
+        else                                                                        // Если есть
+        {
+            printf("Sedlovaya dot: %d\n", dot);                                         // Вывод максимального числа
+        }
         printf("Do you want to repeat the program?\n1. Yes\n2. No\nAnswer: ");      // Вывод повтора программы да/нет
         scanf_s("%d", &x);                                                          // Если 1
     } while (x == 1);                                                           // То повторяем
