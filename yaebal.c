@@ -1,23 +1,48 @@
 #include <stdio.h>
-
+#include <malloc.h>
+#include <stdlib.h>
+#include <locale.h>
 int main()
 {
-    int *mas;
-    int x;
-    scanf_s("%d", &x);
-    mas = (int*)malloc(x * x * sizeof(int));
-    for (int i = 0; i < x * x; i++)
+    setlocale(LC_ALL, "Russian");
+    int *a; // указатель на массив
+    int n;
+    int *stes = 0;
+    int k = 0;
+    printf("Введите кол-во строк(столбцов): ");
+    scanf_s("%d", &n);
+    a = (int*)malloc(n * n * sizeof(int)); // Выделение памяти
+    for (int i = 0; i < n; i++) // цикл по строкам
     {
-        printf("Write a number: ");
-        scanf("%d", &mas[i]);
-    }
-    for(int i = 0; i < x; i++)
-    {
-        for(int j = 0; j < x; j++)
+        for (int j = 0; j < n; j++) // цикл по столбцам
         {
-            printf("%d\t", mas[i * x + j]);
+            printf("a[%d][%d] = ", i, j); // Ввод элементов массива
+            scanf_s("%d", (a + i * n + j));
         }
-        printf("\n");     
     }
-    return 0;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            printf("%5d",*(a+i*n+j));
+            if (i == j)
+            {
+                k++;
+            }
+        printf("\n");
+    }
+    stes = (int*)malloc(k * sizeof(int));
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            if (i == j)
+            {
+                stes[i] = a[i*n+j];
+            }
+        }
+    }
+free(a);
+getchar(); getchar();
+return 0;
 }
