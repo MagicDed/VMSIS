@@ -8,7 +8,7 @@ int main()
 {
     
 	int row, col, x, t;                                     // Переменные кол-ва строчек(row), колонок(col), повтора кода(x), временная(t) 
-	int **ptr;                                              // Двухмерный массив, а точнее его указатель
+	int *ptr;                                              // Двухмерный массив, а точнее его указатель
     do                                                      // Цикл повторять прогу пока мы хотим
     {
         // system("CLS");                                           // Для VS
@@ -16,24 +16,20 @@ int main()
 	    scanf_s("%d", &row);
         printf("How many numbers in the line? ");
         scanf_s("%d", &col);
-	    ptr = (int**)malloc(row * sizeof(int*));                    // Выделение памяти для строчек 
-        for(int i = 0; i < row; i++)
-        {
-            ptr[i] = (int*)malloc(col * sizeof(int));                   // Выделение памяти для столбцов
-        }
+	    ptr = (int*)malloc(row * col * sizeof(int));                      // Выделение памяти для строчек 
 	    for (int i = 0; i < row; i++)                               // Цикл чтобы вписать цифры в матрицу
         {
             for(int j = 0; j < col; j++)
             {
                 printf("Write a number: ");                             // Выводит сообщение чтобы ввели число
-	    	    scanf_s("%d", &ptr[i][j]);                              // Присваивает это число к значению ptr[i][j]
+	    	    scanf_s("%d", &ptr[i * col + j]);                       // Присваивает это число к значению ptr[i * col + j]
             }
         }
         for (int i = 0; i < row; i++)                               // Цикл чтобы вывести матрицу
         {
             for(int j = 0; j < col; j++)
             {
-                printf("%d\t", ptr[i][j]);                                  // Рисует матрицу
+                printf("%d\t", ptr[i * col + j]);                           // Рисует матрицу
             }
             printf("\n");
         }
@@ -44,19 +40,19 @@ int main()
             {
                 for(int j = 1 + k; j < col; j++)                            // Начало отсчета от 1 + k
                 {
-                    if(ptr[i][k] < 0)                                           // Если число отрицательное то
+                    if(ptr[i * col + k] < 0)                                    // Если число отрицательное то
                     {
                         do                                                          // Пропускать это число пока не найдется положительное
                         {
-                            k += 1;                                                  // Сам пропуск
-                            j += 1;                                                  // Сам пропуск
-                        } while(ptr[i][k] < 0);
+                            k += 1;                                                     // Сам пропуск
+                            j += 1;                                                     // Сам пропуск
+                        } while(ptr[i * col + k] < 0);
                     }
-                    if(ptr[i][k] < ptr[i][j])                                   // Если k число меньше j то 
+                    if(ptr[i * col + k] < ptr[i * col + j])                     // Если k число меньше j то 
                     {
-                        t = ptr[i][k];                                              // Мы запоминаем k
-                        ptr[i][k] = ptr[i][j];                                      // Вместо него вписывает j
-                        ptr[i][j] = t;                                              // Вместо j ставим k
+                        t = ptr[i * col + k];                                       // Мы запоминаем k
+                        ptr[i * col + k] = ptr[i * col + j];                        // Вместо него вписывает j
+                        ptr[i * col + j] = t;                                       // Вместо j ставим k
                     }
                 }
             }
@@ -65,7 +61,7 @@ int main()
         {
             for(int j = 0; j < col; j++)
             {
-                printf("%d\t", ptr[i][j]);                                  // Рисует матрицу
+                printf("%d\t", ptr[i * col + j]);                           // Рисует матрицу
             }
             printf("\n");
         }
