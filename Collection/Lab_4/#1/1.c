@@ -14,7 +14,7 @@ int main()
         // system("CLS");                                       // Для VS
         printf("What's the size of the matrix cube? ");                             // Вывод текста (какой размер матрицы)
         scanf_s("%d", &N);                                                          // Присваивание числа
-        mas = (int*)malloc(N * sizeof(int));                                        // Выделение памяти под строчки
+        mas = (int*)malloc(N * N * sizeof(int));                                    // Выделение памяти под строчки
         for(int i = 0; i < N; i++)                                                  // Цикл для ввода цифр в матрицу
         {
             for(int j = 0; j < N; j++)
