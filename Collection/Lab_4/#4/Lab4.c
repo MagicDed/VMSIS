@@ -16,7 +16,7 @@ int main()
 	    scanf_s("%d", &row);
         printf("How many numbers in the line? ");
         scanf_s("%d", &col);
-	    ptr = (int*)malloc(row * col * sizeof(int));                      // Выделение памяти для строчек 
+	    ptr = (int*)malloc(row * col * sizeof(int));                // Выделение памяти для строчек 
 	    for (int i = 0; i < row; i++)                               // Цикл чтобы вписать цифры в матрицу
         {
             for(int j = 0; j < col; j++)
