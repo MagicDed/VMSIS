@@ -7,7 +7,8 @@
 int main()
 {
     int mm[N] [N];                                          // Размер матрицы N на N
-    int t,x;                                                // Для временной переменной(свап)
+    int t;                                                  // Для временной переменной(свап)
+    char x;
     do
     {
         // system("CLS");
@@ -51,9 +52,10 @@ int main()
             }
             printf("\n");                                   // Для перехода на новую строчку
         }
-        printf("Repeat program? \n1. Yes \n2. No\n");
+        printf("Repeat program? \nY. Yes \nN. No\n");
         printf("Answer: ");
-        scanf("%d", &x);
-    } while (x == 1);     
+        rewind(stdin);
+        scanf("%c", &x);
+    } while (x == 'y');     
     return 0;
 }
