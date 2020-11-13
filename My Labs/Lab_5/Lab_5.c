@@ -1,13 +1,6 @@
 // Матрица с динамическим массивом в которой нужно отсортировать числа по убыванию, но оставлять отрицательные числа на своих местах (через функции)
 
-#include <stdio.h>
-#include <stdlib.h>
-// #include <iostream>          // Для VS
-
-int** AllocateMemory(int**, int, int);
-void Input(int**, int, int);
-void Output(int**, int, int);
-void Calculations(int**, int, int);
+#include "Header.h"
 
 int main()
 {
