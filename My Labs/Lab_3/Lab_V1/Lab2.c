@@ -17,7 +17,7 @@ int main()
             for(int j = 0; j < N; j++)                      // Цикл для ввода цифр в N линий
             {
                 printf("Write a number: ");                 // Вывод сообщения (впишите число)
-                scanf("%d", &mm[i][j]);                     // Присваивание числа к массиву i(номер строчки) и к j(цифры в строчке)
+                scanf_s("%d", &mm[i][j]);                     // Присваивание числа к массиву i(номер строчки) и к j(цифры в строчке)
             }
         }
         for(int i = 0; i < N; i++)                          // Весь цикл выводит матрицу (Цикл вывода - i номер строчки)
@@ -55,7 +55,7 @@ int main()
         printf("Repeat program? \nY. Yes \nN. No\n");
         printf("Answer: ");
         rewind(stdin);
-        scanf("%c", &x);
+        scanf_s("%c", &x);
     } while (x == 'y');     
     return 0;
 }
