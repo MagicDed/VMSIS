@@ -24,8 +24,8 @@ int main()
 		mas = AllocateMemory(mas, row, col);
 		Input(mas, row, col);
 		Output(mas, row, col);
-        Calculations(mas, row, col);
-        Output(mas, row, col);
+		Calculations(mas, row, col);
+		Output(mas, row, col);
 		printf("Do you want to repeat program? y/n\n");
 		rewind(stdin);
 		scanf_s("%c", &x);
