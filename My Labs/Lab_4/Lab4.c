@@ -22,14 +22,14 @@ int main()
             for(int j = 0; j < col; j++)
             {
                 printf("Write a number: ");                         // Выводит сообщение чтобы ввели число
-	    	    scanf_s("%d", &ptr[i * col + j]);                   // Присваивает это число к значению ptr[i * col + j]
+	    	    scanf_s("%d", ptr + i * col + j);                   // Присваивает это число к значению*(ptr + i * col + j)
             }
         }
         for (int i = 0; i < row; i++)                               // Цикл чтобы вывести матрицу
         {
             for(int j = 0; j < col; j++)
             {
-                printf("%-4d\t", ptr[i * col + j]);                 // Рисует матрицу
+                printf("%-4d\t",*(ptr + i * col + j));              // Рисует матрицу
             }
             printf("\n");
         }
@@ -40,19 +40,19 @@ int main()
             {
                 for(int j = 1 + k; j < col; j++)                    // Начало отсчета от 1 + k
                 {
-                    if(ptr[i * col + k] < 0)                        // Если число отрицательное то
+                    if(*(ptr + i * col + k) < 0)                    // Если число отрицательное то
                     {
                         do                                          // Пропускать это число пока не найдется положительное
                         {
                             k += 1;                                 // Сам пропуск
                             j += 1;                                 // Сам пропуск
-                        } while(ptr[i * col + k] < 0);
+                        } while(*(ptr + i * col + k) < 0);
                     }
-                    if(ptr[i * col + k] < ptr[i * col + j])         // Если k число меньше j то 
+                    if(*(ptr + i * col + k) < *(ptr + i * col + j)) // Если k число меньше j то 
                     {
-                        t = ptr[i * col + k];                       // Мы запоминаем k
-                        ptr[i * col + k] = ptr[i * col + j];        // Вместо него вписывает j
-                        ptr[i * col + j] = t;                       // Вместо j ставим k
+                        t = *(ptr + i * col + k);                   // Мы запоминаем k
+                        *(ptr + i * col + k) = *(ptr + i * col + j);// Вместо него вписывает j
+                        *(ptr + i * col + j) = t;                   // Вместо j ставим k
                     }
                 }
             }
@@ -61,14 +61,14 @@ int main()
         {
             for(int j = 0; j < col; j++)
             {
-                printf("%-4d\t", ptr[i * col + j]);                 // Рисует матрицу
+                printf("%-4d\t",*(ptr + i * col + j));              // Рисует матрицу
             }
             printf("\n");
         }
         printf("Repeat program? \nY. Yes \nN. No\n");               // Вывод сообщения (Повторить программу да/нет)
         printf("Answer: ");
         rewind(stdin);                                              // Вывод сообщения (Ответ)
-        scanf("%c", &x);                                            // Присваивание введеного числа к x 
+        scanf_s("%c", &x);                                          // Присваивание введеного числа к x 
     } while (x == 'y');                                             // Если это 1 то повторяем программу
     return 0;
 }
