@@ -4,60 +4,93 @@
 #include <stdlib.h>
 // #include <iostream>          // Для VS
 
-void AllocateMemory(int, int, int);
-void Input(int , int, int);
-void Output(int , int, int);
-int Proccess(int , int);
+int** AllocateMemory(int**, int, int);
+void Input(int**, int, int);
+void Output(int**, int, int);
+void Calculations(int**, int, int);
 
 int main()
 {
-    int row, col, t;
-    char x;
-    int **mas;
-    do
-    {
-        printf("How many lines? ");
-        scanf_s("%d", &row);
-        printf("How many numbers in the line? ");
-        scanf_s("%d", &col);
-        AllocateMemory(**mas, row, col);
-        Input(**mas, row, col);
-        Output(**mas, row, col);
-        printf("Do you want to repeat program? y/n\n");
-        rewind(stdin);
-        scanf_s("%c", &x);
-    } while (x == 'y');
-    return 0;
+	int row, col;
+	char x;
+	int **mas = 0;
+	do
+	{
+		// system("CLS");
+		printf("How many lines? ");
+		scanf_s("%d", &row);
+		printf("How many numbers in the line? ");
+		scanf_s("%d", &col);
+		mas = AllocateMemory(mas, row, col);
+		Input(mas, row, col);
+		Output(mas, row, col);
+        Calculations(mas, row, col);
+        Output(mas, row, col);
+		printf("Do you want to repeat program? y/n\n");
+		rewind(stdin);
+		scanf_s("%c", &x);
+	} while (x == 'y');
+	return 0;
 }
 
-void AllocateMemory(int **mas, int row, int col)
+int** AllocateMemory(int** mas, int row, int col)
 {
-    mas = (int**)malloc(row * sizeof(int*));
-    for(int i = 0; i < col; i++)
-    {
-        *(mas + i) = (int*)malloc(col * sizeof(int));
-    }
+	mas = (int**)malloc(row * sizeof(int*));
+	for (int i = 0; i < col; i++)
+	{
+		*(mas + i) = (int*)malloc(col * sizeof(int));
+	}
+	return mas;
 }
 
-void Input(int **mas, int row, int col)
+void Input(int** mas, int row, int col)
 {
-    for(int i = 0; i < row; i++)
+	for (int i = 0; i < row; i++)
+	{
+		for (int j = 0; j < col; j++)
+		{
+			printf("Write a number: ");
+			scanf_s("%d", *(mas + i) + j);
+		}
+	}
+}
+
+void Output(int** mas, int row, int col)
+{
+	for (int i = 0; i < row; i++)
+	{
+		for (int j = 0; j < col; j++)
+		{
+			printf("%-4d\t", *(*(mas + i) + j));
+		}
+		printf("\n");
+	}
+	printf("\n");
+}
+void Calculations(int **mas, int row, int col)
+{
+    int t;
+    for (int i = 0; i < row; i++)
     {
-        for(int j = 0; j < col; j++)
+        for (int k = 0; k < col; k++)
         {
-            printf("Write a number: ");
-            scanf_s("%d", *(*(mas + i) + j));
-        }
-    }
-}
-
-void Output(int **mas, int row, int col)
-{
-    for(int i = 0; i < row; i++)
-    {
-        for(int j = 0; j < col; j++)
-        {
-            printf("%-4d\n", *(*(mas + i) + j));
+            for (int j = 1 + k; j < col; j++)
+            {
+                if (*(*(mas + i) + k) < 0)
+                {
+                    do
+                    {
+                        k += 1;
+                        j += 1;
+                    } while (*(*(mas + i) + k) < 0);
+                }
+                if (*(*(mas + i) + k) < *(*(mas + i) + j))
+                {
+                    t = *(*(mas + i) + k);
+                    *(*(mas + i) + k) = *(*(mas + i) + j);
+                    *(*(mas + i) + j) = t;
+                }
+            }
         }
     }
 }
