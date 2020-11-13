@@ -5,24 +5,24 @@
 
 int main()
 {
-	int row, col;
-	char x;
-	int **mas = 0;
+	int row, col;										// Кол-во строчек и столбцов 
+	char x;												// Переменная для повторения программы
+	int **mas = 0;										// Двухмерный массив
 	do
 	{
 		// system("CLS");
-		printf("How many lines? ");
+		printf("How many lines? ");								// Ввод кол-ва строчек
 		scanf_s("%d", &row);
-		printf("How many numbers in the line? ");
+		printf("How many numbers in the line? ");				// Ввод кол-ва столбцов
 		scanf_s("%d", &col);
-		mas = AllocateMemory(mas, row, col);
-		Input(mas, row, col);
-		Output(mas, row, col);
-		Calculations(mas, row, col);
-		Output(mas, row, col);
-		printf("Do you want to repeat program? y/n\n");
-		rewind(stdin);
+		mas = AllocateMemory(mas, row, col);					// Выделение памяти
+		Input(mas, row, col);									// Ввод чисел в матрицу
+		Output(mas, row, col);									// Вывод матрицы
+		Calculations(mas, row, col);							// Вычисления в матрице
+		Output(mas, row, col);									// Вывод матрицы
+		printf("Do you want to repeat program? y/n\n");			// Повтор программы y/n
+		rewind(stdin);											// Чистка буфера
 		scanf_s("%c", &x);
-	} while (x == 'y');
+	} while (x == 'y');											// если x = y то идет повтор программы
 	return 0;
 }
