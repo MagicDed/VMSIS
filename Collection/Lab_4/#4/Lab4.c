@@ -13,7 +13,7 @@ int main()
     {
         // system("CLS");                                           // Для VS
         printf("How many lines? ");
-	    scanf_s("%d", &row);
+        scanf_s("%d", &row);
         printf("How many numbers in the line? ");
         scanf_s("%d", &col);
 	    ptr = (int*)malloc(row * col * sizeof(int));                // Выделение памяти для строчек 
