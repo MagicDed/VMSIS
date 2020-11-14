@@ -1,3 +1,5 @@
+#include "Header.h"
+
 int** AllocateMemory(int** mas, int row, int col)                   // Функция выделения памяти
 {
 	mas = (int**)malloc(row * sizeof(int*));                        // Выделения памяти для указателей(кол-во линий)
