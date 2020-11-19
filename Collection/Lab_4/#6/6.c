@@ -23,15 +23,15 @@ int main()
         {
             for(int j = 0; j < col; j++)
             {
-                printf("Write a number: ");                                        // Вывод надписи(введите число)
-                scanf_s("%d", &mas[i * col + j]);                                  // Присваивание числа к матрице
+                printf("Write a number: ");                                         // Вывод надписи(введите число)
+                scanf_s("%d", mas+ i * col + j);                                    // Присваивание числа к матрице
             }
         }
         for(int i = 0; i < row; i++)                                                // Цикл вывода массива
         {
             for(int j = 0; j < col; j++)
             {
-                printf("%d\t", mas[i * col + j]);                                   // Выводит массив
+                printf("%d\t", *(mas + i * col + j));                               // Выводит массив
             }
             printf("\n");                                                           // Переход на новую линию
         }
@@ -40,13 +40,13 @@ int main()
         {
             for(int j = 0; j < col; j++)
             {
-                if(mas[i * col + j] < maxmin && mas[i * col + j] < 0)               // Находит самое минимальное меньше нуля
+                if(*(mas + i * col + j) < maxmin && *(mas + i * col + j) < 0)       // Находит самое минимальное меньше нуля
                 {
-                    maxmin = mas[i * col + j];                                      // Присваивает число к переменной
+                    maxmin = *(mas + i * col + j);                                  // Присваивает число к переменной
                 }
-                if(mas[i * col + j] > minmax && mas[i * col + j] >= 0)              // Находит самое большое которое больше или равно нулю
+                if(*(mas + i * col + j) > minmax && *(mas + i * col + j) >= 0)      // Находит самое большое которое больше или равно нулю
                 {
-                    minmax = mas[i * col + j];                                      // Присваивает число к переменной
+                    minmax = *(mas + i * col + j);                                  // Присваивает число к переменной
                 }
             }
         }
@@ -54,15 +54,15 @@ int main()
         {
             for(int j = 0; j < col; j++)
             {
-                if(mas[i * col + j] > maxmin && mas[i * col + j] < 0)               // Находит максимальное число до нуля
+                if((*(mas + i * col + j) > maxmin && *(mas + i * col + j) < 0) || *(mas + i * col + j) == maxmin)       // Находит максимальное число до нуля
                 {
-                    maxmin = mas[i * col + j];                                      // Присваивает число к переменной и запоминает координаты
+                    maxmin = *(mas + i * col + j);                                                                      // Присваивает число к переменной и запоминает координаты
                     co1 = i;
                     co2 = j;
                 }
-                if(mas[i * col + j] < minmax && mas[i * col + j] >= 0)              // Находит минимальное число до отрицательных чисел
+                if((*(mas + i * col + j) < minmax && *(mas + i * col + j) >= 0) || *(mas + i * col + j) == minmax)      // Находит минимальное число до отрицательных чисел
                 {
-                    minmax = mas[i * col + j];                                      // Присваивает число к переменной и запоминает координаты
+                    minmax = *(mas + i * col + j);                                                                      // Присваивает число к переменной и запоминает координаты
                     co3 = i;
                     co4 = j;
                 }
@@ -74,14 +74,14 @@ int main()
         }
         else                                                                        // В другом случае
         {
-            t = mas[co1 * col + co2];                                               // Максмин и минмакс меняется местами
-            mas[co1 * col + co2] = mas[co3 * col + co4];
-            mas[co3 * col + co4] = t;
+            t = *(mas +co1 * col + co2);                                            // Максмин и минмакс меняется местами
+            *(mas + co1 * col + co2) = *(mas + co3 * col + co4);
+            *(mas + co3 * col + co4) = t;
             for(int i = 0; i < row; i++)                                            // Цикл вывода массива
             {
                 for(int j = 0; j < col; j++)
                 {
-                    printf("%d\t", mas[i * col + j]);                               // Выводит массив
+                    printf("%d\t", *(mas + i * col + j));                           // Выводит массив
                 }
                 printf("\n");                                                       // Переход на новую линию
             }
