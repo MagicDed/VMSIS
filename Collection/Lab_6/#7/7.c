@@ -9,12 +9,12 @@ int main()
     int Length;
     do
 	{
-		Length = StringLength(Length);
-        RawLine = MemoryAllocation(Length);
-        Line = MemoryAllocation(Length);
-        Input(RawLine, Length);
-        Line = Calculations(RawLine, Line, Length);
-        Output(Line);
+		Length = StringLength(Length);                          // Ввод длинны строки
+        RawLine = MemoryAllocation(Length);                     // Выделение памяти под первую строку
+        Line = MemoryAllocation(Length);                        // Выделение памяти под вторую строку
+        Input(RawLine, Length);                                 // Ввод сиволов в строку
+        Line = Calculations(RawLine, Line, Length);             // Вычисления
+        Output(Line);                                           // Вывод линии
 		printf("Do you want to repeat program? y/n\n");			// Повтор программы y/n
 		rewind(stdin);											// Чистка буфера
 		scanf_s("%c", &x);

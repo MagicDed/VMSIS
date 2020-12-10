@@ -1,27 +1,27 @@
 #include "Header.h"
 
-int StringLength(int Length)
+int StringLength(int Length)                                                     // Ввод длинны строки
 {
     printf("What is the string lenght?: ");
     scanf_s("%d", &Length);
     return Length;
 }
 
-char* MemoryAllocation(int Length)
+char* MemoryAllocation(int Length)                                              // Выделение памяти под строчку
 {
     char *Memory;
     Memory = (char*)calloc(Length + 1, sizeof(char));
     return Memory;
 }
 
-void Input(char *RawLine, int Length)
+void Input(char *RawLine, int Length)                                           // Ввод сиволов в строку
 {
     printf("Write a string: ");
     printf("String: ", GetString(RawLine, Length));
     printf("%s", RawLine);
 }
 
-char* GetString(char *RawLine, int Length)
+char* GetString(char *RawLine, int Length)                                      // Получение строчки
 {
     rewind(stdin);
     int i = 0;
@@ -30,7 +30,7 @@ char* GetString(char *RawLine, int Length)
     return RawLine;
 }
 
-char* Calculations(char *RawLine, char *Line, int Length)
+char* Calculations(char *RawLine, char *Line, int Length)                       // Вычисления
 {
     int t = 0;
     for(int i = 0; i < Length; i++)
@@ -60,7 +60,7 @@ char* Calculations(char *RawLine, char *Line, int Length)
     return Line;
 }
 
-void Output(char *Line)
+void Output(char *Line)                                                         // Вывод линии
 {
     printf("\nFormatted line: %s\n", Line);
 }
