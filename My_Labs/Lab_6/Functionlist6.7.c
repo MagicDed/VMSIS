@@ -60,31 +60,6 @@ char* Calculations(char *RawLine, char *Line, int Length)                       
     return Line; 
 }
 
-// int t = 0;
-//     for(int i = 0; i < Length; i++)
-//     {
-//         *(Line + t) = *(RawLine + i);
-//         t += 1;
-//         if(*(RawLine + i) == '.')
-//         {
-//             if((*(RawLine + i + 1) >= '0' && *(RawLine + i + 1) <= '9') && *(RawLine + i + 2) >= '0' && *(RawLine + i + 2) <= '9')
-//             {
-//                 *(Line + t) = *(RawLine + i + 1);
-//                 *(Line + t + 1) = *(RawLine + i + 2);
-//                 t += 2;
-//                 for(int j = i + 3; j < Length; j++)
-//                 {
-//                     i = j - 1;
-//                     if(!(*(RawLine + j) >= '0' && *(RawLine + j) <= '9'))
-//                     {
-//                         break;
-//                     }
-//                 }
-//             }
-//         }
-//     }
-//     return Line;
-
 void Output(char *Line)                                                         // Вывод линии
 {
     printf("\nFormatted line: %s\n", Line);
