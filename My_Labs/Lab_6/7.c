@@ -5,10 +5,10 @@
 
 int main()
 {
-    char x;
-    char *RawLine;
-    char *Line;
-    int Length;
+    char x;                 // Для повтора
+    char *RawLine;          // Строчка ввода
+    char *Line;             // Форматированая строчка
+    int Length;             // Длинна строк
     do
 	{
 		Length = StringLength(Length);                          // Ввод длинны строки
