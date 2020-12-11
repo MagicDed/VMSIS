@@ -36,26 +36,25 @@ char* Calculations(char *RawLine, char *Line, int Length)                       
     for(int i = 0; i < Length; i++)
     {
         *(Line + t) = *(RawLine + i);
+        t += 1;
         if(*(RawLine + i) == '.')
         {
             if((*(RawLine + i + 1) >= '0' && *(RawLine + i + 1) <= '9') && *(RawLine + i + 2) >= '0' && *(RawLine + i + 2) <= '9')
             {
-                *(Line + t + 1) = *(RawLine + i + 1);
-                *(Line + t + 2) = *(RawLine + i + 2);
-                t += 3;
+                *(Line + t) = *(RawLine + i + 1);
+                *(Line + t + 1) = *(RawLine + i + 2);
+                t += 2;
                 i += 3;
                 for(i; i < Length; i++)
                 {
                     if(!(*(RawLine + i) >= '0' && *(RawLine + i) <= '9'))
                     {
                         i -= 1;
-                        t -= 1;
                         break;
                     }
                 }
             }
         }
-        t += 1;
     }
     return Line; 
 }
