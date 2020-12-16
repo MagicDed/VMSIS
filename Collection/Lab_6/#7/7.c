@@ -1,12 +1,14 @@
+// Форматировать строчку таким образом чтобы 3 число и последйщие числа удалялись если перед ними стояла точка
+
 #include "Header.h"
 #include "Functionlist6.7.c"
 
 int main()
 {
-    char x;
-    char *RawLine;
-    char *Line;
-    int Length;
+    char x;                 // Для повтора
+    char *RawLine;          // Строчка ввода
+    char *Line;             // Форматированая строчка
+    int Length;             // Длинна строк
     do
 	{
 		Length = StringLength(Length);                          // Ввод длинны строки
