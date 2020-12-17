@@ -52,6 +52,7 @@ char* Calculations(char *RawLine, char *Line, int Length)                       
             }
         }
     }
+    Line = (char*)realloc(Line, sizeof(char) * t + 1), *(Line + t - 1) = '\0';
     return Line;                                                                // Возрат форматированой линии
 }
 
