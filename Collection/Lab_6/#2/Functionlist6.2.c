@@ -52,7 +52,7 @@ char* Calculations(char *RawLine, char *Line, int Length)                       
             }
         }
     }
-    Line = (char*)realloc(Line, sizeof(char) * t + 1), *(Line + t - 1) = '\0';
+    Line = (char*)realloc(Line, sizeof(char) * t + 1), *(Line + t) = '\0';      // Уменьшение строчки до нужных размеров + нуль символ
     return Line;                                                                // Возрат форматированой линии
 }
 
