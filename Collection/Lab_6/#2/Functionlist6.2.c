@@ -25,12 +25,11 @@ char* GetString(char *RawLine, int Length)                                      
 {
     rewind(stdin);
     int i = 0;
-    int t;
     do
     {
-        t = i;
         *(RawLine + i++) = getchar();
-    } while ((*(RawLine + t) != '\n') && (i < Length));                         // ТУТ СТОИТ AND ОПЕРАТОР А ДОЛЖЕН БЫТЬ OR НО С НИМ ОНО НЕ РАБОТАЕТ ААААААА
+    } while ((*(RawLine + i - 1) != '\n') && (i < Length));                         // ТУТ СТОИТ AND ОПЕРАТОР А ДОЛЖЕН БЫТЬ OR НО С НИМ ОНО НЕ РАБОТАЕТ ААААААА
+    *(RawLine + i) = '\0';
     return RawLine;
 }
 
