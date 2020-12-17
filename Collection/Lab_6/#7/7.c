@@ -8,7 +8,7 @@ int main()
     char x;                 // Для повтора
     char *RawLine;          // Строчка ввода
     char *Line;             // Форматированая строчка
-    int Length;             // Длинна строк
+    int Length = NULL;      // Длинна строк
     do
 	{
 		Length = StringLength(Length);                          // Ввод длинны строки
