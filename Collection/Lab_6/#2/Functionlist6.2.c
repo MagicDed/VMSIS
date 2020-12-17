@@ -21,16 +21,16 @@ void Input(char *RawLine, int Length)                                           
     printf("%s", RawLine);                                                      // Вывод написаной строчки, обрезаной если она больше
 }
 
-char* GetString(char *RawLine, int Length)                                      // Я ХЗ КАК ОНО РАБОТАЕТ
+char* GetString(char *RawLine, int Length)                                      // Вводит вписаную строку в массив
 {
     rewind(stdin);
     int i = 0;
     do
     {
-        *(RawLine + i++) = getchar();
-    } while ((*(RawLine + i - 1) != '\n') && (i < Length));                         // ТУТ СТОИТ AND ОПЕРАТОР А ДОЛЖЕН БЫТЬ OR НО С НИМ ОНО НЕ РАБОТАЕТ ААААААА
-    *(RawLine + i) = '\0';
-    return RawLine;
+        *(RawLine + i++) = getchar();                                           // Добавлять цифры в массив и повышать i на один до тех пор пока
+    } while ((*(RawLine + i - 1) != '\n') && (i < Length));                     // Символ будет являтся \n И будет меньше Length
+    *(RawLine + i) = '\0';                                                      // Добавляется нуль символ в конце
+    return RawLine;                                                             // Возращает RawLine
 }
 
 char* Calculations(char *RawLine, char *Line, int Length)                       // Вычисления

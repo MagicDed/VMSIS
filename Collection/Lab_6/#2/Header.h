@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <conio.h>
 
-int StringLength(int);                          // Ввод длинны строки
-char* MemoryAllocation(int);                    // Выделение памяти под строчку
-void Input(char*, int);                         // Ввод сиволов в строку
-char* GetString(char*, int);                    // Получение строчки
-char* Calculations(char*, char*, int);          // Вычисления
-void Output(char*);                             // Вывод линии
+static int StringLength(int);                          // Ввод длинны строки
+static char* MemoryAllocation(int);                    // Выделение памяти под строчку
+static void Input(char*, int);                         // Ввод сиволов в строку
+static char* GetString(char*, int);                    // Получение строчки
+static char* Calculations(char*, char*, int);          // Вычисления
+static void Output(char*);                             // Вывод линии
