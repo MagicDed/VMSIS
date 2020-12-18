@@ -17,7 +17,6 @@ int main()
         Input(RawLine, Length);                                 // Ввод сиволов в строку
         Line = Calculations(RawLine, Line, Length);             // Вычисления
         Output(Line);                                           // Вывод линии
-        free(Line);
 		printf("Do you want to repeat program? y/n\n");			// Повтор программы y/n
 		rewind(stdin);											// Чистка буфера
 		scanf_s("%c", &x);
