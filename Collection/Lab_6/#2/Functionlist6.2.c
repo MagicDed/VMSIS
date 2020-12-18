@@ -2,9 +2,10 @@
 
 int StringLength(int Length)                                                    // Ввод длинны строки
 {
+    int length;
     printf("What is the string lenght?: ");                                     // Какая длинна строки?
-    scanf_s("%d", &Length);                                                     // Присваивание значения к переменной
-    return Length;                                                              // Возращает значение в main
+    scanf_s("%d", &length);                                                     // Присваивание значения к переменной
+    return length;                                                              // Возращает значение в main
 }
 
 char* MemoryAllocation(int Length)                                              // Выделение памяти под строчку
@@ -52,6 +53,7 @@ char* Calculations(char *RawLine, char *Line, int Length)                       
             }
         }
     }
+    free(RawLine);
     Line = (char*)realloc(Line, sizeof(char) * t + 1), *(Line + t) = '\0';      // Уменьшение строчки до нужных размеров + нуль символ
     return Line;                                                                // Возрат форматированой линии
 }

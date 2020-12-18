@@ -8,7 +8,7 @@ int main()
     char x;                 // Для повтора
     char *RawLine;          // Строчка ввода
     char *Line;             // Форматированая строчка
-    int Length = NULL;      // Длинна строк
+    int Length = 0;         // Длинна строк
     do
 	{
 		Length = StringLength(Length);                          // Ввод длинны строки
@@ -17,8 +17,10 @@ int main()
         Input(RawLine, Length);                                 // Ввод сиволов в строку
         Line = Calculations(RawLine, Line, Length);             // Вычисления
         Output(Line);                                           // Вывод линии
+        free(Line);
 		printf("Do you want to repeat program? y/n\n");			// Повтор программы y/n
 		rewind(stdin);											// Чистка буфера
 		scanf_s("%c", &x);
 	} while (x == 'y');
+    return 0;
 }

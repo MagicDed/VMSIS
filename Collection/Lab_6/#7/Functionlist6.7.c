@@ -2,9 +2,10 @@
 
 int StringLength(int Length)                                                    // Ввод длинны строки
 {
+    int length;
     printf("What is the string lenght?: ");                                     // Какая длинна строки?
-    scanf_s("%d", &Length);                                                     // Присваивание значения к переменной
-    return Length;                                                              // Возращает значение в main
+    scanf_s("%d", &length);                                                     // Присваивание значения к переменной
+    return length;                                                              // Возращает значение в main
 }
 
 char* MemoryAllocation(int Length)                                              // Выделение памяти под строчку
@@ -21,42 +22,51 @@ void Input(char *RawLine, int Length)                                           
     printf("%s", RawLine);                                                      // Вывод написаной строчки, обрезаной если она больше
 }
 
-char* GetString(char *RawLine, int Length)                                      // Получение строчки
+char* GetString(char *RawLine, int Length)                                      // Вводит вписаную строку в массив
 {
-    rewind(stdin);                                                              // Чистит буфер
+    rewind(stdin);
     int i = 0;
-    while ((*(RawLine + i++) = getchar()) != '\n');                             // Получать и записывать начение до нажатия Enter
-	*(RawLine + Length) = '\0';                                                 // Поставить нуль символ в конец
-    return RawLine;                                                             // Возращает значение в Input функцию
+    do
+    {
+        *(RawLine + i++) = getchar();                                           // Добавлять цифры в массив и повышать i на один до тех пор пока
+    } while ((*(RawLine + i - 1) != '\n') && (i < Length));                     // Символ будет являтся \n И будет меньше Length
+    *(RawLine + i) = '\0';                                                      // Добавляется нуль символ в конце
+    return RawLine;                                                             // Возращает RawLine
 }
 
 char* Calculations(char *RawLine, char *Line, int Length)                       // Вычисления
 {
-    int t = 0;                                                                  // Переменная для записи чисел во вторую строчку
-    for(int i = 0; i < Length; i++)                                             // Цикл проходящий по всей его длинне
+    int t = 0;
+    for(int i = 0; i < Length;)
     {
-        *(Line + t) = *(RawLine + i);                                           // Запись символов из первой строчки во вторую
-        t += 1;                                                                 // Переход на следуйщий элемент на второй строчке
-        if(*(RawLine + i) == '.')                                               // Если есть точка
+        if(*(RawLine + i) == '\0')                                              // Если стоит ноль символ то выходим из цикла
         {
-            if((*(RawLine + i + 1) >= '0' && *(RawLine + i + 1) <= '9') && *(RawLine + i + 2) >= '0' && *(RawLine + i + 2) <= '9')  // И есть две цифры перед ней
+            break;
+        }
+        *(Line + t++) = *(RawLine + i++);                                       // Записываем символ во вторую строку плюс переходим на следуйщий элемент массива
+        if(*(RawLine + i - 1) == '.')                                           // Если мы записали точку
+        {
+            if((*(RawLine + i) >= '0' && *(RawLine + i) <= '9') && *(RawLine + i + 1) >= '0' && *(RawLine + i + 1) <= '9')  // И перед ней две цифры
             {
-                *(Line + t) = *(RawLine + i + 1);                               // Записываем число из первого строчки во вторую
-                *(Line + t + 1) = *(RawLine + i + 2);                           // Записываем число из первого строчки во вторую
-                t += 2;                                                         // Выравниваем позиции в строчках
-                i += 3;                                                         // Выравниваем позиции в строчках
-                for(i; i < Length; i++)                                         // Цикл пропуска
+                *(Line + t++) = *(RawLine + i++);                               // Мы записываем эти два числа
+                *(Line + t++) = *(RawLine + i++);
+                for(i; i < Length;)                                             // Цикл пропуска
                 {
                     if(!(*(RawLine + i) >= '0' && *(RawLine + i) <= '9'))       // Если символ не число
                     {
-                        i -= 1;                                                 // Перемещаемся на букву
                         break;                                                  // Выход из цикла
+                    }
+                    else                                                        // Если число то смотрим на следуйщий элемент
+                    {
+                        i++;
                     }
                 }
             }
         }
     }
-    return Line;                                                                // Возрат форматированой линии
+    free(RawLine);
+    Line = (char*)realloc(Line, sizeof(char) * t), *(Line + t) = '\0';          // Уменьшение строчки до нужных размеров + нуль символ
+    return Line;
 }
 
 void Output(char *Line)                                                         // Вывод линии
