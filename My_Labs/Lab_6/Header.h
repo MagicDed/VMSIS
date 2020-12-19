@@ -6,5 +6,5 @@ int StringLength(int);                          // Ввод длинны стр�
 char* MemoryAllocation(int);                    // Выделение памяти под строчку
 void Input(char*, int);                         // Ввод сиволов в строку
 char* GetString(char*, int);                    // Получение строчки
-char* Calculations(char*, char*, int);          // Вычисления
+void Calculations(char*, char*, int);           // Вычисления
 void Output(char*);                             // Вывод линии

@@ -34,7 +34,7 @@ char* GetString(char *RawLine, int Length)                                      
     return RawLine;                                                             // Возращает RawLine
 }
 
-char* Calculations(char *RawLine, char *Line, int Length)                       // Вычисления
+void Calculations(char *RawLine, char *Line, int Length)                        // Вычисления
 {
     int t = 0;                                                                  // Временная для записи чисел в первый массив по порядку
     for(int i = 0; i < Length; i++)                                             // Цикл прохода по массиву
@@ -55,7 +55,6 @@ char* Calculations(char *RawLine, char *Line, int Length)                       
     }
     free(RawLine);
     Line = (char*)realloc(Line, sizeof(char) * t + 1), *(Line + t) = '\0';      // Уменьшение строчки до нужных размеров + нуль символ
-    return Line;                                                                // Возрат форматированой линии
 }
 
 void Output(char *Line)                                                         // Вывод линии
@@ -68,4 +67,5 @@ void Output(char *Line)                                                         
     {
         printf("\nFormatted line: %s\n", Line);                                 // Выводим символы между двоеточиями
     }
+    free(Line);
 }

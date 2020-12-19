@@ -34,7 +34,7 @@ char* GetString(char *RawLine, int Length)                                      
     return RawLine;                                                             // Возращает RawLine
 }
 
-char* Calculations(char *RawLine, char *Line, int Length)                       // Вычисления
+void Calculations(char *RawLine, char *Line, int Length)                        // Вычисления
 {
     int t = 0;
     for(int i = 0; i < Length;)
@@ -65,11 +65,11 @@ char* Calculations(char *RawLine, char *Line, int Length)                       
         }
     }
     free(RawLine);
-    Line = (char*)realloc(Line, sizeof(char) * t), *(Line + t) = '\0';          // Уменьшение строчки до нужных размеров + нуль символ
-    return Line;
+    Line = (char*)realloc(Line, sizeof(char) * t + 1), *(Line + t) = '\0';      // Уменьшение строчки до нужных размеров + нуль символ
 }
 
 void Output(char *Line)                                                         // Вывод линии
 {
     printf("\nFormatted line: %s\n", Line);                                     // Вывод
+    free(Line);
 }
