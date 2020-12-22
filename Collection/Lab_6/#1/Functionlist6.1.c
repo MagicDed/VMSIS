@@ -11,7 +11,7 @@ int StringLength(int Length)                                                    
 char* MemoryAllocation(int Length)                                              // Выделение памяти под строчку
 {
     char *Memory;                                                               // Переменная для выделения памяти
-    Memory = (char*)calloc(Length + 1, sizeof(char));                           // Выделение памяти плюс для \0 символа
+    Memory = (char*)calloc(Length * 2 + 1, sizeof(char));                       // Выделение памяти плюс для \0 символа
     return Memory;                                                              // Возращает значение в main
 }
 
@@ -30,27 +30,28 @@ char* GetString(char *RawLine, int Length)                                      
     {
         *(RawLine + i++) = getchar();                                           // Добавлять цифры в массив и повышать i на один до тех пор пока
     } while ((*(RawLine + i - 1) != '\n') && (i < Length));                     // Символ будет являтся \n И будет меньше Length
-    *(RawLine + i - 1) = '\0';                                                      // Добавляется нуль символ в конце
+    *(RawLine + i - 1) = '\0';                                                  // Добавляется нуль символ в конце
     return RawLine;                                                             // Возращает RawLine
 }
 
 void Calculations(char *RawLine, char *Line, int Length)                        // Вычисления
 {
-    int t = 0;                                                                  // Временная для записи чисел в первый массив по порядку
-    for(int i = 0; i < Length; i++)                                             // Цикл прохода по массиву
+    int t = 0;
+    for(int i = 0; i < Length;)                                                 // Цикл прохода по строке
     {
-        if(*(RawLine + i) == ':')                                               // Если в символ является двоеточием
+        if(*(RawLine + i) == '\0')                                              // Если стоит ноль символ то выходим из цикла
         {
-            i++;                                                                // Мы смотрим на следуйщий символ
-            for(i; i < Length; i++)
-            {
-                if(*(RawLine + i) == ':')                                       // Если символ является двоеточием
-                {
-                    break;                                                      // Выходим из цикла
-                }
-                *(Line + t) = *(RawLine + i);                                   // Если это не двоеточие значит записываем во вторую строку
-                t++;                                                            // Идем на следуйщий символ во второй строке
-            }
+            break;
+        }
+        if(*(RawLine + i) == '*')                                               // Если звездочка
+        {
+            i++;                                                                // то пропускаем
+        }
+        else                                                                    // В ином случае пишем одно значение дважды во вторую строку
+        {
+            *(Line + t++) = *(RawLine + i);
+            *(Line + t++) = *(RawLine + i);
+            i++;
         }
     }
     free(RawLine);
@@ -61,7 +62,7 @@ void Output(char *Line)                                                         
 {
     if(!(*Line))                                                                // Если первый символ NULL (привет calloc)
     {
-        printf("\nThere is no colums\n");                                       // Значит двоеточий небыло
+        printf("\nThere is no symbols except *\n");                             // Значит двоеточий небыло
     }
     else                                                                        // Если есть
     {

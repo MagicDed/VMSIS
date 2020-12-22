@@ -30,7 +30,7 @@ char* GetString(char *RawLine, int Length)                                      
     {
         *(RawLine + i++) = getchar();                                           // Добавлять цифры в массив и повышать i на один до тех пор пока
     } while ((*(RawLine + i - 1) != '\n') && (i < Length));                     // Символ будет являтся \n И будет меньше Length
-    *(RawLine + i) = '\0';                                                      // Добавляется нуль символ в конце
+    *(RawLine + i - 1) = '\0';                                                      // Добавляется нуль символ в конце
     return RawLine;                                                             // Возращает RawLine
 }
 
