@@ -43,36 +43,75 @@ char* GetString(char *RawLine, int Length)                                      
 
 void Calculations(char *RawLine, char *Line, int Length)                        // Вычисления
 {
-    int t = 0;                                                                  // Временная для записи чисел в первый массив по порядку
+    int t = 0;
+    int a, b, co1, co2;
+    int sum = 0;
     for(int i = 0; i < Length; i++)                                             // Цикл прохода по массиву
     {
-        if(*(RawLine + i) == ':')                                               // Если в символ является двоеточием
+        if(*(RawLine + i - 1) == '\0')                                              // Если стоит ноль символ то выходим из цикла
         {
-            i++;                                                                // Мы смотрим на следуйщий символ
+            break;
+        }
+        if(!(*(RawLine + i) == ' '))
+        {
+            a = i;
             for(i; i < Length; i++)
             {
-                if(*(RawLine + i) == ':')                                       // Если символ является двоеточием
+                b = i;
+                if(*(RawLine + i) == ' ' || *(RawLine + i) == '\0')
                 {
-                    break;                                                      // Выходим из цикла
+                    b = i;
+                    break;
                 }
-                *(Line + t) = *(RawLine + i);                                   // Если это не двоеточие значит записываем во вторую строку
-                t++;                                                            // Идем на следуйщий символ во второй строке
             }
         }
+        if (sum < (b - a))
+        {
+            sum = b - a;
+            co1 = b; co2 = a;
+        }
+    }
+    for(int i = 0; i < Length; i++)                                             // Цикл прохода по массиву
+    {
+        if(*(RawLine + i - 1) == '\0')                                              // Если стоит ноль символ то выходим из цикла
+        {
+            break;
+        }
+        if(!(*(RawLine + i) == ' '))
+        {
+            a = i;
+            for(i; i < Length; i++)
+            {
+                if(*(RawLine + i) == ' ' || *(RawLine + i) == '\0')
+                {
+                    b = i;
+                    break;
+                }
+            }
+        }
+        if (sum > (b - a))
+        {
+            sum = b - a;
+            co1 = b; co2 = a;
+        }
+    }
+    for(co2; co2 < co1; co2++)
+    {
+        *(Line + t++) = *(RawLine + co2);
     }
     free(RawLine);
-    Line = (char*)realloc(Line, sizeof(char) * t + 1), *(Line + t) = '\0';      // Уменьшение строчки до нужных размеров + нуль символ
+    Line = (char*)realloc(Line, sizeof(char) * sum + 1), *(Line + sum) = '\0';  // Уменьшение строчки до нужных размеров + нуль символ
 }
 
 void Output(char *Line)                                                         // Вывод линии
 {
     if(!(*Line))                                                                // Если первый символ NULL (привет calloc)
     {
-        printf("\nThere is no colums\n");                                       // Значит двоеточий небыло
+        printf("\nThere is no words\n");                                        // Значит двоеточий небыло
     }
     else                                                                        // Если есть
     {
-        printf("\nFormatted line: %s\n", Line);                                 // Выводим символы между двоеточиями
+        printf("\nThe shortest word is: %s\n", Line);                           // Выводим символы между двоеточиями
     }
     free(Line);
 }
