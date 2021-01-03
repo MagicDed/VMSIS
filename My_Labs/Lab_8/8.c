@@ -1,20 +1,16 @@
-// В тексте найти N наиболее часто встречающихся слов
+// Найти n!
 
 #include "Header.h"
-#include "Functionlist7.2.c"
+#include "Functionlist8.8.c"
 
 int main()
 {
     char x;                 // Для повтора
-    char *Line;             // Строчка ввода
     int Length;             // Кол-во наиболее часто встречающихся слов
     do
     {
         Length = StringLength();                                // Ввод длинны строки
-        Line = PointerMemoryAllocation();
-        InputWithDynamicMemoryAllocation(Line);
-        Calculations(Line, Length);
-        printf("%s", Line);
+        Calculations(Length);
         printf("Do you want to repeat program? y/n\n");			// Повтор программы y/n
         rewind(stdin);											// Чистка буфера
         scanf_s("%c", &x);

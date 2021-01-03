@@ -2,37 +2,37 @@
 
 int** AllocateMemory(int **mas, int N)                              // Функция выделения памяти
 {
-	mas = (int**)malloc(N * sizeof(int*));                          // Выделения памяти для указателей(кол-во линий)
-	for (int i = 0; i < N; i++)                                     // Цикл для выделения памяти в каждый указатель
-	{
-		*(mas + i) = (int*)malloc(N * sizeof(int));                 // Выделения памяти для столбцов матрицы
-	}
-	return mas;
+    mas = (int**)malloc(N * sizeof(int*));                          // Выделения памяти для указателей(кол-во линий)
+    for (int i = 0; i < N; i++)                                     // Цикл для выделения памяти в каждый указатель
+    {
+        *(mas + i) = (int*)malloc(N * sizeof(int));                 // Выделения памяти для столбцов матрицы
+    }
+    return mas;
 }
 
 void Input(int **mas, int N)                                        // Функция ввода чисел в матрицу
 {
-	for (int i = 0; i < N; i++)                                     // Цикл ввода чисел
-	{
-		for (int j = 0; j < N; j++)
-		{
-			printf("Write a number: ");                             // Введите число
-			scanf_s("%d", *(mas + i) + j);                          // Сканирует введеное число
-		}
-	}
+    for (int i = 0; i < N; i++)                                     // Цикл ввода чисел
+    {
+        for (int j = 0; j < N; j++)
+        {
+            printf("Write a number: ");                             // Введите число
+            scanf_s("%d", *(mas + i) + j);                          // Сканирует введеное число
+        }
+    }
 }
 
 void Output(int **mas, int N)                                       // Функция вывода матрицы
 {
-	for (int i = 0; i < N; i++)                                     // Цикл вывода матрицы
-	{
-		for (int j = 0; j < N; j++)
-		{
-			printf("%-4d\t", *(*(mas + i) + j));                    // Вывод чисел матриц
-		}
-		printf("\n");                                               // Чтобы была прямоугольной
-	}
-	printf("\n");
+    for (int i = 0; i < N; i++)                                     // Цикл вывода матрицы
+    {
+        for (int j = 0; j < N; j++)
+        {
+            printf("%-4d\t", *(*(mas + i) + j));                    // Вывод чисел матриц
+        }
+        printf("\n");                                               // Чтобы была прямоугольной
+    }
+    printf("\n");
 }
 
 void Calculations(int **mas, int dot, int N)                      	// Функция для вычисления нужных элементов для выполнения задачи
@@ -59,7 +59,7 @@ void Calculations(int **mas, int dot, int N)                      	// Функц
             if(max > *(*(mas + k) + t) && (!i == k))                // Если больше и не равен самому себе то
             {
                 break;                                              // То выход из цикла
-            } 
+            }
         }
     }
     if(!dot)                                                        // Если точки нет

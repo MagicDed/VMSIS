@@ -19,8 +19,8 @@ int main()
         Output(mas, N);                                         // Вывод матрицы
         Calculations(mas, dot, N);                                   // Вычисления
         printf("Do you want to repeat program? y/n\n");			// Повтор программы y/n
-		rewind(stdin);											// Чистка буфера
-		scanf_s("%c", &x);
-	} while (x == 'y');											// если x = y то идет повтор программы
-	return 0;
+        rewind(stdin);											// Чистка буфера
+        scanf_s("%c", &x);
+    } while (x == 'y');											// если x = y то идет повтор программы
+    return 0;
 }
