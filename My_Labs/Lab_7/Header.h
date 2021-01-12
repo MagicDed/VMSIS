@@ -5,6 +5,6 @@
 int StringLength();                             // Ввод длинны строки
 char* PointerMemoryAllocation();
 void InputWithDynamicMemoryAllocation(char*);
-void Calculations(char*, int);
+void Calculations(char*);
 void SmallCase(char*);
 int SpaceSkip(char*, int);

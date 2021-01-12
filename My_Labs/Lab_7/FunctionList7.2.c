@@ -1,13 +1,5 @@
 #include "Header.h"
 
-int StringLength()                                              // Ввод длинны строки
-{
-    int Length;
-    printf("How many common words do you need?: ");                     // Какая длинна строки?
-    scanf_s("%d", &Length);                                             // Присваивание значения к переменной
-    return Length;                                                      // Возращает значение в main
-}
-
 char *PointerMemoryAllocation()
 {
     char *Memory;
@@ -31,49 +23,31 @@ void InputWithDynamicMemoryAllocation(char *Line)               // Comes in with
     *(Line + i - 1) = '\0';
 }
 
-void Calculations(char *Line, int Length)
+void Calculations(char *Line)
 {
     int i = 0;
-    int k = 0;
-    int t = 0;
-    int Repeated = 1;
     char *Word;
-    char FirstLetter;
-    int start, end;
-    SmallCase(Line);
-    i = SpaceSkip(Line, i);
-    if(*(Line + i) >= 'a' && *(Line + i) <= 'z')
-    {
-        FirstLetter = *(Line + i);
-        start = i;
-        do
-        {
-            i++;
-        } while (*(Line + i) != ' ');
-        end = i;
-        Word = (char*)calloc(end - start + 1, sizeof(char));
-    }
+    Word = (char*)calloc(1, sizeof(char));
     do
     {
-        i = SpaceSkip(Line, i);
-        if(*(Line + i) == FirstLetter)
+        if (*(Line + i) >= 'a' && *(Line + i) <= 'z')
         {
-            for(k = start; k < end; k++)
+            int t = i;
+            do
             {
-                if (*(Line + i) != *(Line + k))
-                {
-                    break;
-                }
-                if(end - 1 == k)
-                {
-                    Repeated += 1;
-                }
-            }
+                t++;
+            } while (*(Line + t) != ' ' || *(Line + t) != '\0');
+            Word = (char*)realloc(Word, sizeof(char) * t - i);
+            int k = 0;
+            do
+            {
+                *(Word + k++) = *(Line + i++);
+            } while (t != k);
         }
-        do
+        else
         {
-            i++;
-        } while (*(Line + i) != ' ' && *(Line + i) != '\0' );
+            i++
+        }
     } while (*(Line + i) != '\0');
 }
 
