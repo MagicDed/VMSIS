@@ -10,10 +10,9 @@ int main()
     int Length;             // Кол-во наиболее часто встречающихся слов
     do
     {
-        Line = PointerMemoryAllocation();
-        InputWithDynamicMemoryAllocation(Line);
-        Calculations(Line);
-        printf("%s", Line);
+        Line = PointerMemoryAllocation();                       // Ячейка памяти под указатель
+        InputWithDynamicMemoryAllocation(Line);                 // Ввод текста с динамическим выделением памяти
+        Calculations(Line);                                     // Вычисления
         printf("Do you want to repeat program? y/n\n");			// Повтор программы y/n
         rewind(stdin);											// Чистка буфера
         scanf_s("%c", &x);

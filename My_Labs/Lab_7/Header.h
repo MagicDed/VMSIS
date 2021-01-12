@@ -2,9 +2,8 @@
 #include <stdlib.h>
 #include <conio.h>
 
-int StringLength();                             // Ввод длинны строки
-char* PointerMemoryAllocation();
-void InputWithDynamicMemoryAllocation(char*);
-void Calculations(char*);
+char* PointerMemoryAllocation();                            // Ячейка памяти под указатель
+void InputWithDynamicMemoryAllocation(char*);               // Ввод текста с динамическим выделением памяти
+void Calculations(char*);                                   // Вычисления
 void SmallCase(char*);
 int SpaceSkip(char*, int);
